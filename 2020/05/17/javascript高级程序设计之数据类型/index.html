@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript高级程序设计之数据类型 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言javascript高级程序设计这本书，我在读大学的时候就通读过一遍。如今在工作之余，再回头仔细的阅读一遍，记录一些容易忘记和忽略的知识点。其中也会掺杂一些其他乱七八糟的东西，比如代码规范、设计模式以及我和我的工作等。 数据类型ECMAScript有五种基本数据类型：Undefined、Null、Boolean、Number和String，还有一种复杂数据类型Object。 typeOf操作符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript高级程序设计之数据类型">
+<meta property="og:url" content="http://yoursite.com/2020/05/17/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言javascript高级程序设计这本书，我在读大学的时候就通读过一遍。如今在工作之余，再回头仔细的阅读一遍，记录一些容易忘记和忽略的知识点。其中也会掺杂一些其他乱七八糟的东西，比如代码规范、设计模式以及我和我的工作等。 数据类型ECMAScript有五种基本数据类型：Undefined、Null、Boolean、Number和String，还有一种复杂数据类型Object。 typeOf操作符">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-16T23:45:16.000Z">
+<meta property="article:modified_time" content="2020-05-20T14:23:28.720Z">
+<meta property="article:author" content="MCZhanhong">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">MCZhanhong</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>7</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-javascript高级程序设计之数据类型" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/17/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time class="post-time" datetime="2020-05-16T23:45:16.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">17</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript高级程序设计之数据类型
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>javascript高级程序设计这本书，我在读大学的时候就通读过一遍。如今在工作之余，再回头仔细的阅读一遍，记录一些容易忘记和忽略的知识点。其中也会掺杂一些其他乱七八糟的东西，比如代码规范、设计模式以及我和我的工作等。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>ECMAScript有五种基本数据类型：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>和<code>String</code>，还有一种复杂数据类型<code>Object</code>。</p>
+<h3 id="typeOf操作符"><a href="#typeOf操作符" class="headerlink" title="typeOf操作符"></a>typeOf操作符</h3><p>typeOf可能返回的值：</p>
+<ul>
+<li><code>undefined</code>：未定义</li>
+<li><code>boolean</code>：布尔值</li>
+<li><code>string</code>：字符串</li>
+<li><code>number</code>：数值</li>
+<li><code>object</code>：<strong>对象或null</strong></li>
+<li><code>function</code>：函数</li>
+</ul>
+<h3 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h3><p>从逻辑上来讲，<code>null</code>表示一个空对象指针，在工作中常用来解除变量和对象之间的引用关系，方便浏览器进行垃圾回收。</p>
+<h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>转换规则：</p>
+<ul>
+<li>任何非空字符串 =&gt; <code>true</code></li>
+<li>任何非零数字（包括无穷大） =&gt; <code>true</code></li>
+<li>0和NAN =&gt; <code>false</code></li>
+<li>除null以外的任何对象（包括空对象和空数组） =&gt; <code>true</code></li>
+<li><code>undefined</code> =&gt; <code>false</code></li>
+</ul>
+<p><strong>任意两个NaN都不相等</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="literal">NaN</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a == b); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p><strong>常用技巧：在工作中，经常会使用!!将变量转换为boolean类型</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line"><span class="built_in">console</span>.log(!!str); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!arr); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(!!arr.length); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><ol>
+<li>科学计数法<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">2.5e5</span>; <span class="comment">// 250000</span></span><br></pre></td></tr></table></figure></li>
+<li>浮点数精度<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">0.2</span>;</span><br><span class="line"><span class="built_in">console</span>.log((a + b) === <span class="number">0.3</span>); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure></li>
+<li>数值范围</li>
+</ol>
+<ul>
+<li>负无穷：<code>Number.NEGATIVE</code>或<code>Number.MIN_VALUE</code></li>
+<li>正无穷：<code>Number.POSITIVE_INFINITY</code>或<code>Number.MAX_VALUE</code></li>
+<li>判断数字是否在javascript的数值范围内：<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="built_in">Number</span>.MAX_VALUE + <span class="built_in">Number</span>.MAX_VALUE;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isFinite</span>(num)); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li>NaN<br><code>isNaN()</code>函数被用来判断一个变量是否<strong>不是数字</strong>，但是这个方法得到的结果并不准确。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">NaN</span>)); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="number">10</span>)); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'10'</span>)); <span class="comment">// =&gt; false(会被转换成数字10)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'aa'</span>); <span class="comment">// =&gt; true(不能转换为数字)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">true</span>)); <span class="comment">// =&gt; false(可以被转换成数字1)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">null</span>)); <span class="comment">// =&gt; false(null本质是个对象，会被转换成1)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">undefined</span>)); <span class="comment">// =&gt; true(undefined不能被转换成数字)</span></span><br></pre></td></tr></table></figure>
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3></li>
+<li><code>toString()</code> 方法用于将变量转换为字符串，<strong><code>null</code>和<code>undefined</code>没有该方法</strong>。</li>
+<li><code>String()</code> 方法可以将任何类型的变量转换为字符串，转换时优先使用<code>toString()</code>方法，如果是<code>null</code>则返回<code>&quot;null&quot;</code>，如果是<code>undefined</code>则返回<code>&quot;undefined&quot;</code>。</li>
+</ol>
+<h3 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h3><p>创建一个对象</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+
+<p>更多内容请看<code>javascript高级程序设计之引用类型</code></p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><h3 id="位操作符（简要介绍我在工作中用过的位操作符，这个家伙尽量在工作中少用，小心被同事锤！）"><a href="#位操作符（简要介绍我在工作中用过的位操作符，这个家伙尽量在工作中少用，小心被同事锤！）" class="headerlink" title="位操作符（简要介绍我在工作中用过的位操作符，这个家伙尽量在工作中少用，小心被同事锤！）"></a>位操作符（简要介绍我在工作中用过的位操作符，<strong>这个家伙尽量在工作中少用，小心被同事锤！</strong>）</h3><ol>
+<li>按位非（~）：取反减1（可以用于判断一个数字是否为-1）<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">-1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(!~num); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="布尔操作符"><a href="#布尔操作符" class="headerlink" title="布尔操作符"></a>布尔操作符</h3><ol>
+<li>逻辑非</li>
+</ol>
+<p>常用的转换规则之前提过，再补充几个：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(!<span class="literal">null</span>); <span class="comment">// =&gt; true(null本质是个对象)</span></span><br><span class="line"><span class="built_in">console</span>.log(!<span class="literal">NaN</span>); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(!<span class="literal">undefined</span>); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="comment">// 常用的判断是将变量转换为布尔值</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">null</span>); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">NaN</span>); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(!!<span class="literal">undefined</span>); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>逻辑与</li>
+</ol>
+<p>这里没啥好记录的。。。</p>
+<ol start="3">
+<li>逻辑或</li>
+</ol>
+<p>常用于短路操作</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">const</span> b = a || <span class="string">'a'</span>; <span class="comment">// =&gt; 'a'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><h3 id="for-in-语句"><a href="#for-in-语句" class="headerlink" title="for-in 语句"></a>for-in 语句</h3><p><code>for-in</code>语句常用来枚举对象的属性。<strong>注意：<code>for-in</code>输出的属性是没有顺序的。</strong></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>写到这里，我不得不提一句，在写函数的时候，<strong>应当尽可能的保证一个函数的功能纯净，函数参数的个数尽量不要大于等于3个，好处是方便测试，方便调用者理解函数的作用；还有就是一个函数要么返回一个值，要么永远不要返回值，否则会给调试带来麻烦</strong></p>
+<p>更多内容请看<code>javascript高级程序设计之函数表达式</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/17/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="ckaffqdwe0003vcvk0x927ihw" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/19/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          javascript高级程序设计之变量、作用域和内存
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/26/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">你不知道的Javascript</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Hexo</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">MCZhanhong</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>7</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>2</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/MCZhanHong" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://mczhanhong.github.io/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2019 - 2020 MCZhanhong<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
